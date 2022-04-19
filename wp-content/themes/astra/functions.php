@@ -186,7 +186,7 @@ function airport_shortode(){
 	$html .='<form action="" method="post">';
 	if( $ariport !=''){
 		
-		$html .= '<select class="form-control js-example-tags"  name="Airport" value="'.$ariport.'">';
+		$html .= '<select class="form-control js-example-tags"  name="name" value="'.$ariport.'">';
 		$html .='<option  disabled selected hidden>Airport departure</option>';
         foreach($ariport as $result){ 
 			$html .= ' <option selected="selected" >'; 
@@ -197,7 +197,7 @@ function airport_shortode(){
 	  $html .= '</select>'; }
 	  if( $ariport !=''){
 		
-		$html .= '<select class="form-control js-example-tags"  name="Airport" value="'.$ariport.'">';
+		$html .= '<select class="form-control js-example-tags"  name="name" value="'.$ariport.'">';
 		$html .='<option disabled selected hidden>Destination airport</option>';
         foreach($ariport as $result){ 
 			$html .= ' <option selected="selected"  >'; 
@@ -208,6 +208,9 @@ function airport_shortode(){
 	  $html .= '</select>'; }
 	  $html .= '<button type="submit" value="Apply Now">Apply Now </button>'; 
 	$html .='</form>';
+
+	$html.="<div id='ajaxTest'></div>";
+	
     return $html;
 } 
 add_shortcode('airports-list', 'airport_shortode'); 

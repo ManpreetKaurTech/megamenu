@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <link rel="profile" href="https://gmpg.org/xfn/11">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 <?php wp_head(); ?>
 <?php astra_head_bottom(); ?>
 </head>
