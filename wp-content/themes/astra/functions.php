@@ -180,37 +180,53 @@ require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
 function airport_shortode(){ 
     global $wpdb;
    $ariport = $wpdb->get_results( "SELECT * FROM `airport` ORDER BY `name` ASC" );
-//    echo "<pre>";
-//    print_r($ariport);
-    $html = ''; 
-	$html .='<form action="" method="post">';
-	if( $ariport !=''){
+// //    echo "<pre>";
+// //    print_r($ariport);
+//     $html = ''; 
+// 	$html .='<form action="" method="post">';
+// 	if( $ariport !=''){
 		
-		$html .= '<select class="form-control js-example-tags"  name="name" value="'.$ariport.'">';
-		$html .='<option  disabled selected hidden>Airport departure</option>';
-        foreach($ariport as $result){ 
-			$html .= ' <option selected="selected" >'; 
-			 $html .= $result->name; 
-			 $html .= ' </option>';
-			 } 
+// 		$html .= '<select class="form-control js-example-tags"  name="name" value="'.$ariport.'">';
+// 		$html .='<option  disabled selected hidden>Airport departure</option>';
+//         foreach($ariport as $result){ 
+// 			$html .= ' <option selected="selected" >'; 
+// 			 $html .= $result->name; 
+// 			 $html .= ' </option>';
+// 			 } 
 
-	  $html .= '</select>'; }
-	  if( $ariport !=''){
+// 	  $html .= '</select>'; }
+// 	  if( $ariport !=''){
 		
-		$html .= '<select class="form-control js-example-tags"  name="name" value="'.$ariport.'">';
-		$html .='<option disabled selected hidden>Destination airport</option>';
-        foreach($ariport as $result){ 
-			$html .= ' <option selected="selected"  >'; 
-			 $html .= $result->name; 
-			 $html .= ' </option>';
-			 } 
+// 		$html .= '<select class="form-control js-example-tags"  name="name" value="'.$ariport.'">';
+// 		$html .='<option disabled selected hidden>Destination airport</option>';
+//         foreach($ariport as $result){ 
+// 			$html .= ' <option selected="selected"  >'; 
+// 			 $html .= $result->name; 
+// 			 $html .= ' </option>';
+// 			 } 
 
-	  $html .= '</select>'; }
-	  $html .= '<button type="submit" value="Apply Now">Apply Now </button>'; 
-	$html .='</form>';
+// 	  $html .= '</select>'; }
+// 	  $html .= '<button type="submit" value="Apply Now">Apply Now </button>'; 
+// 	$html .='</form>';
 
-	$html.="<div id='ajaxTest'></div>";
-	
+// 	$html.="<div id='ajaxTest'></div>";
+
+$html .='<form action="" method="post">';
+$html .='<input type="text"  id="add-city-name" name="city" list="">';
+if( $ariport !=''){
+$html .=' <datalist id="cityname">';
+foreach($ariport as $result){ 
+$html .='<option>';
+$html .= $result->name; 
+$html .= ','.($result->icao_code); 
+$html .= ','.$result->city; 
+$html .= ','.$result->country;
+$html .= ' </option>';
+}
+$html .='</datalist>';
+}
+$html .='</form>';
+$html .='<div id="ajaxTest"></div>';
     return $html;
 } 
 add_shortcode('airports-list', 'airport_shortode'); 
