@@ -178,6 +178,7 @@ require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-hooks.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
 /* airports  shortcode */
 function airport_shortode(){ 
+	
     global $wpdb;
    $ariport = $wpdb->get_results( "SELECT * FROM `airport` ORDER BY `name` ASC" );
 // //    echo "<pre>";
@@ -212,11 +213,11 @@ function airport_shortode(){
 // 	$html.="<div id='ajaxTest'></div>";
 
 $html .='<form action="" method="post">';
-$html .='<input type="text"  id="add-city-name" name="city" list="">';
+$html .='<input type="text"  id="add-city-name" name="'.$ariport.'" >';
 if( $ariport !=''){
-$html .=' <datalist id="cityname">';
+$html .=' <datalist id="'.$ariport.'">';
 foreach($ariport as $result){ 
-$html .='<option>';
+$html .='<option value="'.$result->name.'">';
 $html .= $result->name; 
 $html .= ','.($result->icao_code); 
 $html .= ','.$result->city; 
@@ -225,6 +226,7 @@ $html .= ' </option>';
 }
 $html .='</datalist>';
 }
+$html .= '<button type="submit" value="Apply Now">Apply Now </button>'; 
 $html .='</form>';
 $html .='<div id="ajaxTest"></div>';
     return $html;
